@@ -67,7 +67,4 @@ public class FileUtil {
         log.info("共耗时{}毫秒",endTime-startTime);
     }
 
-    public static void main(String[] args) {
-        FileUtil.unZip("/Users/tangfuqiang/Downloads/天彦反诈(重庆)V1.0.5.zip","/Users/tangfuqiang/Downloads","gbk");
-    }
 }
