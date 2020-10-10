@@ -1,6 +1,7 @@
-package com.tfq.common.entiy;
+package main.com.tfq.common.entiy;
 
-import com.tfq.common.enums.ResultEnum;
+import main.com.tfq.common.enums.ResultEnum;
+
 import java.io.Serializable;
 
 public class Result<T> implements Serializable {
