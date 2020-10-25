@@ -1,6 +1,6 @@
-package main.com.tfq.common.entiy;
+package com.tfq.common.entiy;
 
-import main.com.tfq.common.enums.ResultEnum;
+import com.tfq.common.enums.ResultEnum;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package main.com.tfq.common.util;
+package com.tfq.common.util;
 
 import java.text.NumberFormat;
 import java.util.Collections;

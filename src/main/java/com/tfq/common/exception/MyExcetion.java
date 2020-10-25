@@ -1,4 +1,4 @@
-package main.com.tfq.common.exception;
+package com.tfq.common.exception;
 
 public class MyExcetion extends RuntimeException {
 

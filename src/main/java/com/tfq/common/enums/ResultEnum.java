@@ -1,4 +1,4 @@
-package main.com.tfq.common.enums;
+package com.tfq.common.enums;
 
 public enum ResultEnum {
     ERROR("202","未知错误"),
