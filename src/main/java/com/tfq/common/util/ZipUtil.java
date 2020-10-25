@@ -122,8 +122,8 @@ public class ZipUtil {
     /**
      * @param zipOutputStream      zip输出流
      * @param bufferedOutputStream 缓存输出流
-     * @param sourceFile 压缩文件
-     * @param base 压缩文件在压缩包中路径
+     * @param sourceFile           压缩文件
+     * @param base                 压缩文件在压缩包中路径
      * @throws Exception
      */
     private static void compress(ZipOutputStream zipOutputStream, BufferedOutputStream bufferedOutputStream, File sourceFile, String base) throws IOException {
@@ -131,9 +131,9 @@ public class ZipUtil {
         if (sourceFile.isDirectory()) {
             //取出文件夹中的文件（或子文件夹）
             File[] flist = sourceFile.listFiles();
-            //如果文件夹为空，则只需在目的地zip文件中写入一个目录进入点¬¬
+            //如果文件夹为空，则只需在目的地zip文件中写入一个目录
             if (flist.length == 0) {
-                zipOutputStream.putNextEntry(new ZipEntry(base + File.separator));
+                zipOutputStream.putNextEntry(new ZipEntry(base));
             } else//如果文件夹不为空，则递归调用compress，文件夹中的每一个文件（或文件夹）进行压缩
             {
                 for (int i = 0; i < flist.length; i++) {
@@ -143,17 +143,15 @@ public class ZipUtil {
         } else//如果不是目录（文件夹），即为文件，则先写入目录进入点，之后将文件写入zip文件中
         {
             zipOutputStream.putNextEntry(new ZipEntry(base));
-            FileInputStream fos = new FileInputStream(sourceFile);
-            BufferedInputStream bis = new BufferedInputStream(fos);
-
-            int tag;
-            System.out.println(base);
+            FileInputStream fileInputStream = new FileInputStream(sourceFile);
+            BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
+            int tag = 0;
             //将源文件写入到zip文件中
-            while ((tag = bis.read()) != -1) {
+            while ((tag = bufferedInputStream.read()) != -1) {
                 bufferedOutputStream.write(tag);
             }
-            bis.close();
-            fos.close();
+            fileInputStream.close();
+            bufferedInputStream.close();
         }
     }
 }
