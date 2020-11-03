@@ -118,12 +118,4 @@ public class FileUtil {
         return stringBuilder.toString();
     }
 
-
-    public static void main(String[] args) throws IOException {
-        File file = new File("/Users/tangfuqiang/Downloads/配置文件的副本.txt");
-        byte[] bytes = readDataByByte(file);
-        File file1 = new File("/Users/tangfuqiang/Downloads/配置文件的副本2.txt");
-
-        appendFile(file1,bytes);
-    }
 }
