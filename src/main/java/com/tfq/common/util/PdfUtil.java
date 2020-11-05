@@ -5,18 +5,15 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
 import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetEncoder;
 
 @Slf4j
 public class PdfUtil {
 
     /**
-     *
-     * @param pdfFile pdf文件
+     * @param pdfFile  pdf文件
      * @param savePath 转化出word保存路径
      */
-    public static void pdfToWord(File pdfFile,String savePath) throws IOException {
+    public static void pdfToWord(File pdfFile, String savePath, String encode) throws IOException {
         Writer writer = null;
         FileOutputStream outputStream = null;
         File wordFile = null;
@@ -25,14 +22,14 @@ public class PdfUtil {
             //获取pdf页数
             int page = document.getNumberOfPages();
             String pdfName = pdfFile.getName();
-            savePath = savePath + File.separator + pdfName.substring(0,pdfName.length()-4) + ".doc";
+            savePath = savePath + File.separator + pdfName.substring(0, pdfName.length() - 4) + ".doc";
             wordFile = new File(savePath);
-            if(wordFile.exists()){
+            if (wordFile.exists()) {
                 wordFile.delete();
             }
             wordFile.createNewFile();
             outputStream = new FileOutputStream(wordFile);
-            writer = new OutputStreamWriter(outputStream, "GBK");
+            writer = new OutputStreamWriter(outputStream, encode);
             PDFTextStripper stripper = new PDFTextStripper();
             //排序
             stripper.setSortByPosition(true);
@@ -40,17 +37,17 @@ public class PdfUtil {
             stripper.setStartPage(1);
             // 设置转换的结束页
             stripper.setEndPage(page);
-            stripper.writeText(document,writer);
-        }catch (IOException e){
-            log.error("pdf转图片失败，pdf文件："+pdfFile.getAbsolutePath()+",word文件保存地址："+savePath);
-            if(wordFile.exists()){
+            stripper.writeText(document, writer);
+        } catch (IOException e) {
+            log.error("pdf转图片失败，pdf文件：" + pdfFile.getAbsolutePath() + ",word文件保存地址：" + savePath);
+            if (wordFile.exists()) {
                 wordFile.delete();
             }
-        }finally {
-            if(writer != null){
+        } finally {
+            if (writer != null) {
                 writer.close();
             }
-            if(outputStream != null){
+            if (outputStream != null) {
                 outputStream.close();
             }
         }
@@ -58,35 +55,32 @@ public class PdfUtil {
     }
 
     /**
-     *
-     * @param pdfPath pdf文件路径
+     * @param pdfPath  pdf文件路径
      * @param savePath 转化出word保存路径
      */
-    public static void pdfToWord(String pdfPath,String savePath){
+    public static void pdfToWord(String pdfPath, String savePath) {
 
     }
 
     /**
-     *
      * @param wordFile word文件
      * @param savePath 转化出pdf保存文件
      */
-    public static void wordToPdf(File wordFile,String savePath){
+    public static void wordToPdf(File wordFile, String savePath) {
 
     }
 
     /**
-     *
      * @param wordPath word路径
      * @param savePath 转化出pdf保存文件
      */
-    public static void wordToPdf(String wordPath,String savePath){
+    public static void wordToPdf(String wordPath, String savePath) {
 
     }
 
 
     public static void main(String[] args) throws IOException {
         File file = new File("/Users/tangfuqiang/Downloads/集合.pdf");
-        PdfUtil.pdfToWord(file,"/Users/tangfuqiang/Downloads");
+        PdfUtil.pdfToWord(file, "/Users/tangfuqiang/Downloads","GBK");
     }
 }
