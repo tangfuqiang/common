@@ -32,7 +32,7 @@ public class PdfUtil {
             }
             wordFile.createNewFile();
             outputStream = new FileOutputStream(wordFile);
-            writer = new OutputStreamWriter(outputStream, "UTF-8");
+            writer = new OutputStreamWriter(outputStream, "GBK");
             PDFTextStripper stripper = new PDFTextStripper();
             //排序
             stripper.setSortByPosition(true);
