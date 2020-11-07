@@ -1,9 +1,11 @@
 package com.tfq.common.entiy;
 
 import com.tfq.common.enums.ResultEnum;
+import lombok.Data;
 
 import java.io.Serializable;
 
+@Data
 public class Result<T> implements Serializable {
 
     private static final long serialVersionUID = 42L;
