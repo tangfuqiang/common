@@ -1,5 +1,6 @@
 package com.tfq.common.util;
 
+
 import java.text.NumberFormat;
 import java.util.Collections;
 import java.util.Comparator;
@@ -13,7 +14,7 @@ public class ListUtil {
      * @param sort  true升序 false降序
      * @param names 排序属性名 权重按顺序排列
      */
-    public static <T> void sortList(List<T> list, boolean sort, String... names) {
+    public static <T> void sortList(List<T> list, final boolean sort, final String... names) {
 
         Collections.sort(list, new Comparator<T>() {
             @Override

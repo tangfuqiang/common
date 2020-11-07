@@ -29,27 +29,24 @@ public class Result<T> implements Serializable {
         this.data = data;
     }
 
-    public Result success(T data){
+    public static Result success(Object data){
         return new Result(ResultEnum.SUCCESS.getCode(),ResultEnum.SUCCESS.getMsg(),data);
     }
 
-    public Result success(String msg,T data){
+    public static Result success(String msg,Object data){
         return new Result(ResultEnum.SUCCESS.getCode(),msg,data);
     }
 
-    public Result error(T data){
+    public static Result error(Object data){
         return new Result(ResultEnum.ERROR.getCode(),ResultEnum.ERROR.getMsg(),data);
     }
 
-    public Result error(String msg,T data){
+    public static Result error(String msg,Object data){
         return new Result(ResultEnum.ERROR.getCode(),msg,data);
     }
 
-    public Result error(String code,String msg,T data){
+    public static Result error(String code,String msg,Object data){
         return new Result(code,msg,data);
     }
-
-
-
 
 }
